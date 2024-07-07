@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results - Create Your Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <img src="https://www.shutterstock.com/shutterstock/photos/2299277831/display_1500/stock-vector-quiz-logo-quiz-time-label-with-question-mark-quiz-emblem-for-business-marketing-and-advertising-2299277831.jpg" alt="Logo" class="logo">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+    <section id="results">
+        <div class="quiz-container">
+            <div class="results">
+                <h2>Quiz Complete!</h2>
+                <p id="score"></p>
+                <p>Your answers have been recorded. You can share your quiz using the link below:</p>
+                <p><a id="quiz-link" href="#" target="_blank">Share this link</a></p>
+                <p><button onclick="createAnotherQuiz()">Create Your Own Quiz</button></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Create Your Quiz. All rights reserved.</p>
+    </footer>
+    <script>
+        function createAnotherQuiz() {
+            window.location.href = "index.html";
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const storedAnswers = JSON.parse(decodeURIComponent(urlParams.get('answers')));
+            const currentAnswers = JSON.parse(decodeURIComponent(urlParams.get('currentAnswers')));
+
+            let score = 0;
+            if (storedAnswers && currentAnswers) {
+                storedAnswers.forEach((answer, index) => {
+                    if (answer === currentAnswers[index]) {
+                        score++;
+                    }
+                });
+            }
+
+            document.getElementById('score').textContent = `You scored ${score} out of 10.`;
+
+            const quizLink = `quiz.html?answers=${encodeURIComponent(JSON.stringify(storedAnswers))}`;
+            document.getElementById('quiz-link').href = quizLink;
+        });
+    </script>
+</body>
+</html>

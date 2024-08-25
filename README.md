@@ -1,4 +1,2 @@
-# CreateYourQuiz
-CreateYourQuiz is a frontend project.
-It is a quiz website in which anyone can create a own quiz on themselves and can send it to their friends or anyone.
-This will make you know that who knows you well. 
+# PersonalizedQuiz
+Personalized Quiz is an interactive web application that allows users to create customized quizzes based on their preferences. By answering a series of questions about their likes and interests, users can generate a unique quiz that can be shared with others via a link. This project is designed to be simple, engaging, and fun for users who want to test their friends or create personalized quizzes for special occasions. 
